@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +11,7 @@ namespace CapRunner.Player
         [SerializeField] private Button jumpButton;
 
         private Rigidbody2D myRigidbody;
-        private bool canJump;
+        private bool canJump;        
 
         // Start is called before the first frame update
         void Start()
@@ -38,7 +35,7 @@ namespace CapRunner.Player
             if (canJump)
             {
                 canJump = false;
-                
+                                
                 //Debug.Log(Mathf.RoundToInt(transform.position.x));
 
                 if (Mathf.RoundToInt(transform.position.x)<0)
@@ -54,9 +51,9 @@ namespace CapRunner.Player
             }
             else
             {
-                Debug.Log("<color=red> is not jump </color>");
+                //Debug.Log("<color=red> is not jump </color>");
             }
             
-        }
+        }            
     }
 }

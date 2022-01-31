@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CapRunner.Utilites;
 
-namespace CapRunner.Obstacles
+namespace CapRunner.Obstacle
 {
-    public class ObstacleSpawner : MonoBehaviour
+    public class ObstacleSpawner : MonoBehaviour,IIncreseSpeed
     {
         [SerializeField] private GameObject[] obstacles;
         [SerializeField] private float waitTime;
+        [SerializeField] private float spawnSpeed=0;
 
         private List<GameObject> obstaclesList = new List<GameObject>();
 
@@ -55,10 +57,10 @@ namespace CapRunner.Obstacles
 
         private IEnumerator SpawnRandomObstacle()
         {
-            yield return new WaitForSecondsRealtime(Random.Range(1.5f, 4.5f));
+            yield return new WaitForSecondsRealtime(spawnSpeed);
 
             int index = Random.Range(0, obstaclesList.Count);
-            
+
             while (true)
             {
                 if (!obstaclesList[index].activeInHierarchy)
@@ -74,6 +76,11 @@ namespace CapRunner.Obstacles
             }
 
             StartCoroutine(SpawnRandomObstacle());
+        }        
+
+        public void IncreseSpeed()
+        {
+            spawnSpeed -= 0.05f;
         }
     }
 }

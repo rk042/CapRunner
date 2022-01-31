@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CapRunner.Utilites;
 
-namespace CapRunner.Obstacles
-{
-    public class Obstacles : MonoBehaviour
+namespace CapRunner.Obstacle
+{    
+    public class Obstacles : MonoBehaviour,IIncreseSpeed
     {
         [SerializeField] private float moveSpeed = -3f;
+        [SerializeField] private ObstalceType types;
+
+        public ObstalceType obstalceType { get => types; }
 
         private Rigidbody2D myRigidBody;
 
@@ -24,12 +28,17 @@ namespace CapRunner.Obstacles
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("trigger enter "+collision.gameObject.tag);
+            //Debug.Log("trigger enter "+collision.gameObject.tag);
 
             if (collision.gameObject.CompareTag("Collecter"))
             {
                 gameObject.SetActive(false);
             }
+        }
+
+        public void IncreseSpeed()
+        {
+            moveSpeed -= 0.1f;
         }
     }
 }
