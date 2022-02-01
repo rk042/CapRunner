@@ -1,3 +1,4 @@
+using CapRunner.Utilites;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +36,9 @@ namespace CapRunner.Player
             if (canJump)
             {
                 canJump = false;
-                                
+                
+                SoundManager.instance.PlayerJump();
+
                 //Debug.Log(Mathf.RoundToInt(transform.position.x));
 
                 if (Mathf.RoundToInt(transform.position.x)<0)

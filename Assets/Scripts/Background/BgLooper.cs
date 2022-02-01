@@ -35,7 +35,7 @@ namespace CapRunner.Background
                     item.IncreseSpeed();
                 }
 
-                os.IncreseSpeed();
+                os?.IncreseSpeed();
             }
 
             offset.x+=moveSpeed/10 *Time.deltaTime;

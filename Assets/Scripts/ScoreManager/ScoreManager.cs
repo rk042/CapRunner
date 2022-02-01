@@ -8,9 +8,10 @@ namespace CapRunner.Score
     public class ScoreManager : MonoBehaviour
     {
         [SerializeField] private TMP_Text scoreText;
+        [SerializeField] private TMP_Text gameOverScoreText;
 
         private Coroutine StopStartScore;
-        public int Score { get; private set; }
+        public int score { get; private set; }
         
         // Start is called before the first frame update
         void Start()
@@ -23,8 +24,8 @@ namespace CapRunner.Score
             while (true)
             {
                 yield return new WaitForSecondsRealtime(1f);
-                Score++;
-                scoreText.text = "Score " + Score;
+                score++;
+                scoreText.text = "Score " + score;
             }
         }
 
@@ -33,6 +34,7 @@ namespace CapRunner.Score
             if (StopStartScore!=null)
             {
                 StopCoroutine(StopStartScore);
+                gameOverScoreText.text = $"your score : {score}";
             }
         }
     }

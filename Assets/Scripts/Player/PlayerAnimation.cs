@@ -1,6 +1,7 @@
 using CapRunner.Obstacle;
 using EZCameraShake;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CapRunner.Player
 {
@@ -8,6 +9,7 @@ namespace CapRunner.Player
     {
         private Animator anim;
         private int PlayerHitTrigger = Animator.StringToHash("Hit");
+        [SerializeField] private UnityEvent GameOverEvent;
 
         // Start is called before the first frame update
         void Start()
@@ -42,6 +44,7 @@ namespace CapRunner.Player
             if (collision.gameObject.CompareTag("Collecter"))
             {
                 Debug.Log("Game Over");
+                GameOverEvent.Invoke();
             }
         }
     }

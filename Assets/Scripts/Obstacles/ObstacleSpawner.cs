@@ -8,7 +8,6 @@ namespace CapRunner.Obstacle
     public class ObstacleSpawner : MonoBehaviour,IIncreseSpeed
     {
         [SerializeField] private GameObject[] obstacles;
-        [SerializeField] private float waitTime;
         [SerializeField] private float spawnSpeed=0;
 
         private List<GameObject> obstaclesList = new List<GameObject>();
