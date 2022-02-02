@@ -54,5 +54,10 @@ namespace CapRunner.Utilites
         {
             SoundManager.instance.IsPlay(onOff.isOn);
         }
+
+        public void OpenLinkProfile()
+        {
+            Application.OpenURL("https://www.linkedin.com/in/ketan-rathod-rk/");
+        }
     }
 }
