@@ -15,6 +15,7 @@ namespace CapRunner.Utilites
     {
         [SerializeField] private GameObject GameOverScreen;
         [SerializeField] private Toggle onOff;
+        [SerializeField] private GameObject TutorialScreen;
 
         private void Start()
         {
@@ -23,11 +24,36 @@ namespace CapRunner.Utilites
             {
                 onOff.isOn = SoundManager.instance.Play;
             }
+            
+            //if (SoundManager.instance.IsFristTimePlay)
+            //{
+            //    TutorialScreen.SetActive(true);
+            //}
+            //else
+            //{
+            //    btn_skip();
+            //}
         }
         public void btn_Play()
         {
-            SceneManager.LoadScene(1);
             SoundManager.instance.ButtonClick();
+            
+            if (SoundManager.instance.IsFristTimePlay)
+            {
+                StartCoroutine(COR_PlayTutorialScreen());
+            }
+            else
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
+        private IEnumerator COR_PlayTutorialScreen()
+        {
+            TutorialScreen.SetActive(true);
+            yield return new WaitForSecondsRealtime(2f);
+            TutorialScreen.SetActive(false);
+            SceneManager.LoadScene(1);
+            SoundManager.instance.IsFristTimePlay = false;
         }
 
         public void btn_Sound()
@@ -58,6 +84,12 @@ namespace CapRunner.Utilites
         public void OpenLinkProfile()
         {
             Application.OpenURL("https://www.linkedin.com/in/ketan-rathod-rk/");
+        }
+
+        public void btn_skip()
+        {
+            TutorialScreen.SetActive(false);
+            SoundManager.instance.IsFristTimePlay = false;
         }
     }
 }

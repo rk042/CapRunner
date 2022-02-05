@@ -16,11 +16,12 @@ namespace CapRunner.Utilites
         [SerializeField] private AudioSource playerHit;
         [SerializeField] private AudioSource gameOver;
         [SerializeField] private AudioSource playerJump;
-        
-        
+
+        private bool isFristTimePlay = true;
         private bool isPlay=true;
 
         public bool Play => isPlay;
+        public bool IsFristTimePlay { get => isFristTimePlay; set => isFristTimePlay = value; }
         
         private void Awake()
         {

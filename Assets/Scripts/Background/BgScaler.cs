@@ -19,6 +19,12 @@ namespace CapRunner.Background
             {
                 transform.localScale=new Vector3(widht+3f,1f,0);
             } 
-        }       
+            test();
+        }    
+
+        private void test()
+        {
+            test();
+        }   
     }
 }
